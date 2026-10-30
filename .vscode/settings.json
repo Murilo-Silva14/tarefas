@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    }
+    "python.terminal.useEnvFile": True,
+    "editor.rulers": [70, 80],
+    "files.analysis.typeCheckingMode": "basic"
+}

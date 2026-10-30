@@ -1,14 +1,19 @@
 from flask import Flask, render_template
-
-app = Flask (__name__)
-
+ 
+from tarefas.models.database import init_db
+ 
+app = Flask(__name__)
+ 
+with app.app_context():
+    init_db()
+ 
 @app.route('/test')
 def test():
     return 'Servidor online!'
-
+ 
 @app.route('/')
 def home():
-    return render_template('base.html', titulo='home')
-
-if __name__ == "__main__":
+    return render_template('base.html', titulo= 'Minha lista de tarefas')
+ 
+if __name__ == '__main__':
     app.run()
