@@ -4,7 +4,8 @@ from tarefas.models.database import Database
 
 
 class Tarefa:
-    """Provê métodos para armazenar, recuperar e processar os dados das tarefas criadas a partit do formulário principal.
+    """Provê mmétodos para armazenar, recuperar e processar os dados das terefas
+    criadas a partir do formulário principal.
     """
 
     def __init__(self, titulo, id = None, data_conclusao = None):
@@ -13,18 +14,16 @@ class Tarefa:
         self.data_conclusao = data_conclusao
 
 
-        def salvarTarefa(self):
-            """Salva a tarefa no banco de dados."""
+    def salvarTarefa(self):
+        """Salva a tarefa no banco de dados"""
 
-            sql = 'INSERT INTO tarefa (titulo_tarefa, data_conclusao) VALUES (%s, %s);'
-            params = (self.titulo, self.data_conclusao)
-
-            # Gerenciador de contexto (with)
-            # Acessar os métodos __enter__ e __exit__ da classe
-            with Database() as db:
-                db.executar(sql, params)
+        sql = 'INSERT INTO tarefa (titulo_tarefa, data_conclusao) VALUES (%s, %s);'
+        params = (self.titulo, self.data_conclusao)
+        
+        with Database() as db:
+            db.executar(sql, params)
 
 
-# Área 51 (testes)
-tarefa = Tarefa('Minha nova tarefa')
+#Teste
+tarefa = Tarefa('Minhanova tarefa')
 tarefa.salvarTarefa()
