@@ -1,245 +1,234 @@
-/* ==============================
-   Paleta de cores: tons de laranja
-   Aplicação: Lista de tarefas
-   ============================== */
- 
+
 :root {
-    --laranja-principal: #f57c00;
-    --laranja-escuro: #e65100;
-    --laranja-claro: #ffcc80;
-    --laranja-suave: #fff3e0;
-    --fundo: #fff8f1;
-    --branco: #ffffff;
-    --texto: #3e2723;
-    --texto-secundario: #795548;
-    --borda: #ffe0b2;
-    --sombra: 0 8px 24px rgba(230, 81, 0, 0.10);
+  --bg-main: #f3f0ff;
+  --card-bg: #ffffff;
+  --accent-neon: #ff5757;    
+  --accent-yellow: #ffde59;    
+  --accent-purple: #7b2cbf;    
+  --text-main: #000000;
+  --border-thick: 3px solid #000000;
+  --shadow-hard: 4px 4px 0px #000000;
+  --shadow-hard-sm: 2px 2px 0px #000000;
 }
  
- 
-* {
-    box-sizing: border-box;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
  
 body {
-    max-width: 760px;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 20px 24px;
- 
-    font-family: "Segoe UI", Arial, sans-serif;
-    color: var(--texto);
-    background:
-        radial-gradient(
-            circle at top right,
-            #ffe0b2 0,
-            transparent 35%
-        ),
-        var(--fundo);
- 
-    line-height: 1.2;
+  font-family: 'Courier New', Courier, monospace, system-ui, sans-serif; /* Visual retro/industrial */
+  background-color: var(--bg-main);
+  background-image: radial-gradient(#d8b4fe 1.5px, transparent 1.5px);
+  background-size: 24px 24px; /* Fundo quadriculado/pontilhado marcante */
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
 }
  
- 
-h2 {
-    margin: 0 0 30px;
-    color: var(--laranja-escuro);
-    font-size: 1.9rem;
-    font-weight: 750;
-    line-height: 1.3;
-    letter-spacing: -0.5px;
+/* Painel Principal com bordas grossas e sombra chapada */
+body {
+  width: 100%;
+  margin-left: 245px;
+  text-align: center;
+  max-width: 500px;
+  background-color: var(--card-bg);
+  border: var(--border-thick);
+  border-radius: 12px;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 32px;
 }
  
-h2::after {
-    content: "";
-    display: block;
-    width: 64px;
-    height: 5px;
-    margin-top: 14px;
-    border-radius: 10px;
-    background: var(--laranja-principal);
+/* =================================================================
+   TÍTULO ESTILO POSTER
+   ================================================================ */
+h1 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: var(--text-main);
+  background-color: var(--accent-yellow);
+  border: var(--border-thick);
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-hard-sm);
+  transform: rotate(-1deg); /* Toque lúdico/despojado */
 }
  
- 
-input {
-    display: block;
-    width: 100%;
-    min-height: 50px;
-    margin-bottom: 16px;
-    padding: 12px 16px;
- 
-    color: var(--texto);
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 4px;
- 
-    font: inherit;
-    font-size: 1rem;
- 
-    outline: none;
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
+/* =================================================================
+   CAMPOS DE ENTRADA (INPUTS BRUTALISTAS)
+   ================================================================ */
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  background-color: #ffffff;
+  border: var(--border-thick);
+  border-radius: 6px;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  outline: none;
+  box-shadow: var(--shadow-hard-sm);
+  margin-bottom: 16px;
+  transition: transform 0.1s ease;
 }
  
-input::placeholder {
-    color: #a1887f;
+input[type="text"]::placeholder {
+  color: #666666;
+  font-weight: 400;
 }
  
-input:hover {
-    border-color: var(--laranja-claro);
+input[type="text"]:focus,
+input[type="date"]:focus {
+  background-color: var(--accent-yellow);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
 }
  
-input:focus {
-    border-color: var(--laranja-principal);
-    box-shadow: 0 0 0 4px rgba(245, 124, 0, 0.14);
+/* =================================================================
+   BOTÃO ADICIONAR (DESTAQUE MÁXIMO)
+   ================================================================ */
+button[onclick*="adicionarTarefa"] {
+  width: 100%;
+  background-color: var(--accent-neon);
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px;
+  border: var(--border-thick);
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: var(--shadow-hard);
+  margin-bottom: 28px;
+  transition: all 0.08s ease;
 }
  
- 
-body > button {
-    display: block;
-    width: 100%;
-    min-height: 52px;
-    margin: 8px 0 24px;
-    padding: 13px 20px;
- 
-    color: var(--branco);
-    background: linear-gradient(
-        135deg,
-        var(--laranja-principal),
-        var(--laranja-escuro)
-    );
- 
-    border: none;
-    border-radius: 4px;
- 
-    font: inherit;
-    font-size: 1rem;
-    font-weight: 700;
- 
-    cursor: pointer;
-    box-shadow: 0 5px 12px rgba(230, 81, 0, 0.20);
- 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        filter 0.2s ease;
+button[onclick*="adicionarTarefa"]:hover {
+  background-color: #ff3b3b;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
 }
  
-body > button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(230, 81, 0, 0.28);
-    filter: brightness(1.04);
+button[onclick*="adicionarTarefa"]:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
 }
  
-body > button:active {
-    transform: translateY(0);
-    box-shadow: 0 3px 8px rgba(230, 81, 0, 0.18);
+/* =================================================================
+   LISTA DE TAREFAS E CARTÕES
+   ================================================================ */
+output#listaTarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
  
-button:focus-visible {
-    outline: 3px solid var(--laranja-claro);
-    outline-offset: 3px;
+/* Estado vazio com visual carimbo/alerta */
+output#listaTarefas:empty::before,
+output#listaTarefas:not(:has(li)) {
+  content: "[!] Nenhuma tarefa no radar.";
+  display: block;
+  text-align: center;
+  color: var(--text-main);
+  font-weight: 700;
+  padding: 24px;
+  background-color: #ffe5e5;
+  border: var(--border-thick);
+  border-radius: 6px;
+  box-shadow: var(--shadow-hard-sm);
 }
  
- 
-#listaTarefas {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
+/* Cada item de tarefa no formato de bloco sólido */
+output#listaTarefas > li {
+  background-color: #e0f2fe; /* Azulzinho ciano retro */
+  border: var(--border-thick);
+  border-radius: 6px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow-hard-sm);
+  transition: transform 0.1s ease;
 }
  
-/* Cada tarefa é um div criado pelo JavaScript */
- 
-#listaTarefas > div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
- 
-    min-width: 0;
-    padding: 12px 12px;
- 
-    color: var(--texto);
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-left: 5px solid var(--laranja-principal);
-    border-radius: 4px;
- 
-    box-shadow: var(--sombra);
-    overflow-wrap: anywhere;
- 
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+output#listaTarefas > li:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #000000;
+  background-color: #bae6fd;
 }
  
-#listaTarefas > div:hover {
-    transform: translateY(-2px);
-    border-left-color: var(--laranja-escuro);
-    box-shadow: 0 10px 28px rgba(230, 81, 0, 0.15);
+/* Botão Apagar estilo selo/alerta */
+output#listaTarefas > li > a {
+  background-color: var(--text-main);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.08s ease;
+  flex-shrink: 0;
 }
  
- 
-#listaTarefas button {
-    flex-shrink: 0;
-    margin-left: 0 !important;
-    padding: 8px 13px;
- 
-    color: var(--laranja-escuro);
-    background: var(--laranja-suave);
-    border: 1px solid var(--laranja-claro);
-    border-radius: 4px;
- 
-    font: inherit;
-    font-size: 0.85rem;
-    font-weight: 700;
- 
-    cursor: pointer;
- 
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+output#listaTarefas > li > a:hover {
+  background-color: #ff5757;
+  color: #000000;
 }
  
-#listaTarefas button:hover {
-    color: var(--branco);
-    background: var(--laranja-escuro);
-    border-color: var(--laranja-escuro);
+/* =================================================================
+   ACESSIBILIDADE E RESPONSIVIDADE
+   ================================================================ */
+input:focus-visible,
+a:focus-visible {
+  outline: 3px dashed var(--accent-purple);
+  outline-offset: 4px;
 }
- 
- 
-@media (max-width: 600px) {
-    body {
-        padding: 32px 16px;
-    }
- 
-    h2 {
-        font-size: 1.55rem;
-    }
- 
-    #listaTarefas > div {
-        align-items: flex-start;
-        gap: 12px;
-        padding: 14px;
-    }
- 
-    #listaTarefas button {
-        padding: 7px 10px;
-    }
-}
- 
  
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-    }
+  *, *::before, *::after {
+    transform: none !important;
+    transition: none !important;
+  }
 }
+ 
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #ffffff;
+  }
+ 
+  h1 {
+    font-size: 1.1rem;
+  }
+ 
+  output#listaTarefas > li {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+ 
+  output#listaTarefas > li > a {
+    width: 100%;
+    text-align: center;
+  }
+}
+ 

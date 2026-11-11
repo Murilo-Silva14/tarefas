@@ -9,12 +9,23 @@
 <body>
     <h1>Digite a tarefa e a data de coclusão (opcional):</h1>
  
-    <input type="text" id="tituloTarefa">
-    <input type="date" id="dataConclusao">
-    <button type="button" onclick="adicionarTarefa()">Adicionar</button>
-    <output id="listaTarefas">Nenhuma tarefa cadastrada</output>
+    <form method="POST"> <!-- seleciona o método HTTP -->
+        <input type="text" id="tituloTarefa" name="tituloTarefa">
+        <input type="date" id="dataConclusao" name="dataConclusao">
+        <button type="submit">Adicionar</button>
+    </form>
+    <!-- <output id="listaTarefas">Nenhuma tarefa cadastrada</output> -->
+
+    <ul>
+        {% for tarefa in tarefas_da_pagina %}
+            <li>
+                {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }}
+                <a href="#">Apagar</a>
+            </li>
+        {% endfor %}
+    </ul>
  
-    <script>
+    <!-- <script>
         // Aplicação MVC (Modelagem-Visualização-Controle)
  
         let tarefas;
@@ -82,9 +93,9 @@
  
         }
  
-        renderizarTarefas();
+        renderizarTarefa();
  
-    </script>
+    </script> -->
 </body>
 </html>
  

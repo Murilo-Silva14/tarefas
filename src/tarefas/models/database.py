@@ -1,7 +1,6 @@
 from os import getenv
 from pathlib import Path
 
-
 import mysql.connector as mc
 from dotenv import load_dotenv
 from mysql.connector import Error
@@ -74,6 +73,7 @@ class Database:
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SQL_PATH = BASE_DIR / "data" / "tarefas.sql"
+
 
 def init_db(sql_filepath=SQL_PATH):
     """Função responsável por inicializar o scheme (database) no banco de dados."""
