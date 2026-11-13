@@ -9,23 +9,25 @@
 <body>
     <h1>Digite a tarefa e a data de conclusão (opcional):</h1>
  
-    <form method="POST"> <!-- seleciona o método HTTP -->
-        <input type="text" id="tituloTarefa" name="tituloTarefa">
-        <input type="date" id="dataConclusao" name="dataConclusao">
-        <button type="submit">Adicionar</button>
+    <form method="POST" action="{{ url_for('atualizar', id=tarefa_edicao.id) if tarefa_edicao else url_for('home') }}">
+        <input type="text" id="tituloTarefa" name="tituloTarefa" value="{{ tarefa_edicao.titulo if tarefa_edicao else '' }}">
+        <input type="date" id="dataConclusao" name="dataConclusao" value="{{ tarefa_edicao.data_conclusao.strftime('%Y-%m-%d') if tarefa_edicao and tarefa_edicao.data_conclusao else '' }}">
+        <button type="submit">{{ 'Atualizar' if tarefa_edicao else 'Adicionar' }}</button>
     </form>
     <!-- <output id="listaTarefas">Nenhuma tarefa cadastrada</output> -->
-   
+
     <ul id="listaTarefas">
-        {% for tarefa in tarefas_da_pagina %}
-            <li>
-                {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }}
-                <a href="{{ url_for('apagar_id_especificado', id=tarefa.id_tarefa) }}">Apagar</a> <!-- Link para a rota de apagar este ID -->
-            </li>
-        {% endfor %}
+    {% for tarefa in tarefas_da_pagina %}
+        <li>
+            {{ tarefa.titulo_tarefa }} - {{ tarefa.data_conclusao }}
+
+            <a href="{{ url_for('atualizar', id=tarefa.id_tarefa) }}">Editar</a>
+
+            <a href="{{ url_for('apagar_id_especificado', id=tarefa.id_tarefa) }}">Apagar</a>
+        </li>
+    {% endfor %}
     </ul>
- 
-    <!-- script>
+<!-- script>
         // Aplicação MVC (Molagem-Vosualização-Controle)
  
         // Seção de Modelagem
