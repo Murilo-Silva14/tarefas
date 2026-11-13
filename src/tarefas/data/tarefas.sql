@@ -1,9 +1,9 @@
-CREATE DATABASE IF NOT EXISTS `tarefas`;
+CREATE DATABASE IF NOT EXISTS `tarefa`;
 
-USE `tarefas`;
+USE tarefa;
 
 CREATE TABLE tarefas (
     id_tarefa BIGINT AUTO_INCREMENT PRIMARY KEY,
     titulo_tarefa VARCHAR(100) NOT NULL,
-    data_conclusao DATETIME
+    data_conclusao DATETIME NULL
 );
