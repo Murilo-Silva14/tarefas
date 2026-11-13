@@ -28,7 +28,7 @@ class Tarefas:
  
     @staticmethod
     def listarTarefas() -> list:
-        """Retorna uma lista com todas as tarefas cadastradas."""
+        """Irá retornar uma lista com todas as tarefas cadastradas."""
  
         sql = '''SELECT id_tarefa, titulo_tarefa, data_conclusao
         FROM tarefas LIMIT 100; '''
