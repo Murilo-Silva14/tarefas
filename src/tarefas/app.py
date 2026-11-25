@@ -36,7 +36,6 @@ def home():
         'base.html',
         titulo_da_pagina='Minha lista de tarefas',
         tarefas_da_pagina=tarefas,
-        tarefa_edicao=None
     )
 
 
